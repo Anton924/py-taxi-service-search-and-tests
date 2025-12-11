@@ -14,7 +14,8 @@ class CarFormTest(TestCase):
     def test_drivers_label(self):
         form = CarForm()
         self.assertTrue(
-            form.fields["drivers"].label is None or form.fields["drivers"] == "drivers"
+            form.fields["drivers"].label is None
+            or form.fields["drivers"] == "drivers"
         )
 
     def test_checking_for_model(self):
@@ -42,7 +43,7 @@ class DriverLicenseUpdateFormTest(TestCase):
         self.assertTrue(form.Meta.model == Driver)
 
     def test_validate_license_number_function(self):
-        form_1 = DriverLicenseUpdateForm(data={"license_number":"ABCC12345"})
+        form_1 = DriverLicenseUpdateForm(data={"license_number": "ABCC12345"})
         form_2 = DriverLicenseUpdateForm(data={"license_number": "ABCDEFGI"})
         form_3 = DriverLicenseUpdateForm(data={"license_number": "abc12345"})
 
@@ -55,7 +56,10 @@ class DriverSearchFormTest(TestCase):
     def test_search_field_placeholder(self):
         form = DriverSearchForm()
 
-        self.assertEqual(form.fields["username"].widget.attrs["placeholder"], "Enter driver's name...")
+        self.assertEqual(
+            form.fields["username"].widget.attrs["placeholder"],
+            "Enter driver's name..."
+        )
         self.assertEqual(form.fields["username"].label, "")
 
 
@@ -63,12 +67,17 @@ class CarSearchFormTest(TestCase):
     def test_search_field_placeholder(self):
         form = CarSearchForm()
 
-        self.assertEqual(form.fields["model"].widget.attrs["placeholder"], "Enter car model...")
+        self.assertEqual(
+            form.fields["model"].widget.attrs["placeholder"],
+            "Enter car model..."
+        )
 
 
 class ManufacturerSearchFieldTest(TestCase):
     def test_search_field_placeholder(self):
         form = ManufacturerSearchField()
 
-        self.assertEqual(form.fields["name"].widget.attrs["placeholder"], "Enter manufacturer name...")
-
+        self.assertEqual(
+            form.fields["name"].widget.attrs["placeholder"],
+            "Enter manufacturer name..."
+        )

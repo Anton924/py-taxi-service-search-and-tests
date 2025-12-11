@@ -11,8 +11,12 @@ class ManufacturerModelTest(TestCase):
         )
 
     def test_manufacturer_fields_titles(self):
-        field_label_name = self.manufacturer._meta.get_field("name").verbose_name
-        field_label_country = self.manufacturer._meta.get_field("country").verbose_name
+        field_label_name = self.manufacturer._meta.get_field(
+            "name"
+        ).verbose_name
+        field_label_country = self.manufacturer._meta.get_field(
+            "country"
+        ).verbose_name
         self.assertEqual(field_label_name, "name")
         self.assertEqual(field_label_country, "country")
 
@@ -44,7 +48,9 @@ class DriverModelTest(TestCase):
     def test_driver_str_method(self):
         self.assertEqual(
             str(self.driver),
-            f"{self.driver.username} ({self.driver.first_name} {self.driver.last_name})"
+            f"{self.driver.username}"
+            f" ({self.driver.first_name} "
+            f"{self.driver.last_name})"
         )
 
 
@@ -69,7 +75,9 @@ class CarModelTest(TestCase):
 
     def test_car_fields_titles(self):
         field_label_model = self.car._meta.get_field("model").verbose_name
-        field_label_manufacturer = self.car._meta.get_field("manufacturer").verbose_name
+        field_label_manufacturer = self.car._meta.get_field(
+            "manufacturer"
+        ).verbose_name
         field_label_drivers = self.car._meta.get_field("drivers").verbose_name
         self.assertEqual(field_label_model, "model")
         self.assertEqual(field_label_manufacturer, "manufacturer")
@@ -77,4 +85,3 @@ class CarModelTest(TestCase):
 
     def test_car_set_method(self):
         self.assertEqual(str(self.car), self.car.model)
-        

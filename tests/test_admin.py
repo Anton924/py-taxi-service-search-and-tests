@@ -37,32 +37,6 @@ class AdminSiteTests(TestCase):
     def test_driver_creation_license_number(self):
         url = reverse("admin:taxi_driver_add")
         res = self.client.get(url)
-        self.assertContains(res, self.driver._meta.get_field("license_number").name)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        self.assertContains(
+            res, self.driver._meta.get_field(
+                "license_number").name)
