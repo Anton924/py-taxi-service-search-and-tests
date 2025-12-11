@@ -10,7 +10,6 @@
   </h1>
   <div class="row mb-0">
     <form action="" method="get" class="form-inline mb-3">
-    {% csrf_token %}
     {{ search_field|crispy }}
     <input type="submit" value="🔎" class="btn btn-secondary ml-2">
   </form>

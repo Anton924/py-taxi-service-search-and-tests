@@ -15,7 +15,7 @@ class CarFormTest(TestCase):
         form = CarForm()
         self.assertTrue(
             form.fields["drivers"].label is None
-            or form.fields["drivers"] == "drivers"
+            or form.fields["drivers"].label == "drivers"
         )
 
     def test_checking_for_model(self):
@@ -26,9 +26,11 @@ class CarFormTest(TestCase):
 
     def test_checking_for_fields(self):
         form = CarForm()
-        self.assertTrue(
-            form.fields.__len__() == 2 or form.fields.__len__() == 3
+        self.assertIn(
+            "model", form.fields
         )
+        self.assertIn("manufacturer", form.fields)
+        self.assertIn("drivers", form.fields)
 
 
 class DriverCreationFormTest(TestCase):
