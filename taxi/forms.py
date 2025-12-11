@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from taxi.models import Car, Driver
+from taxi.models import Car, Driver, Manufacturer
 
 
 class CarForm(forms.ModelForm):
@@ -50,3 +50,53 @@ def validate_license_number(
         raise ValidationError("Last 5 characters should be digits")
 
     return license_number
+
+
+class DriverSearchForm(forms.ModelForm):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter driver's name..."
+            }
+        )
+    )
+    class Meta:
+        model = get_user_model()
+        fields = ("username",)
+
+
+class CarSearchForm(forms.ModelForm):
+    model = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter car model..."
+            }
+        )
+    )
+
+    class Meta:
+        model = Car
+        fields = ("model",)
+
+
+class ManufacturerSearchField(forms.ModelForm):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter manufacturer name..."
+            }
+        )
+    )
+
+    class Meta:
+        model = Manufacturer
+        fields = ("name", )
