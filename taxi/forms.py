@@ -52,7 +52,7 @@ def validate_license_number(
     return license_number
 
 
-class DriverSearchForm(forms.ModelForm):
+class DriverSearchForm(forms.Form):
     username = forms.CharField(
         max_length=255,
         required=False,
@@ -64,12 +64,8 @@ class DriverSearchForm(forms.ModelForm):
         )
     )
 
-    class Meta:
-        model = get_user_model()
-        fields = ("username",)
 
-
-class CarSearchForm(forms.ModelForm):
+class CarSearchForm(forms.Form):
     model = forms.CharField(
         max_length=255,
         required=False,
@@ -81,12 +77,8 @@ class CarSearchForm(forms.ModelForm):
         )
     )
 
-    class Meta:
-        model = Car
-        fields = ("model",)
 
-
-class ManufacturerSearchField(forms.ModelForm):
+class ManufacturerSearchField(forms.Form):
     name = forms.CharField(
         max_length=255,
         required=False,
@@ -97,7 +89,3 @@ class ManufacturerSearchField(forms.ModelForm):
             }
         )
     )
-
-    class Meta:
-        model = Manufacturer
-        fields = ("name", )

@@ -83,5 +83,5 @@ class CarModelTest(TestCase):
         self.assertEqual(field_label_manufacturer, "manufacturer")
         self.assertEqual(field_label_drivers, "drivers")
 
-    def test_car_set_method(self):
+    def test_car_str_method(self):
         self.assertEqual(str(self.car), self.car.model)
